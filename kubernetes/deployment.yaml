@@ -1,0 +1,33 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bmi-calculator
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bmi-calculator
+  template:
+    metadata:
+      labels:
+        app: bmi-calculator
+    spec:
+      containers:
+        - name: bmi-calculator
+          image: bmi-calculator:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 45
+            periodSeconds: 15
