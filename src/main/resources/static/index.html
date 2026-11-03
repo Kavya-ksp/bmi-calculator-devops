@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BMI Calculator</h1>
+            <p>Check your Body Mass Index easily</p>
+        </header>
+
+        <main class="card">
+            <form id="bmiForm">
+                <label for="age">Age (years)</label>
+                <input type="number" id="age" min="1" max="120" required>
+
+                <label for="weight">Weight</label>
+                <div class="input-row">
+                    <input type="number" id="weight" min="0.1" step="any" required>
+                    <select id="weightUnit">
+                        <option value="kg">kg</option>
+                        <option value="lb">lb</option>
+                    </select>
+                </div>
+
+                <label for="height">Height</label>
+                <div class="input-row">
+                    <input type="number" id="height" min="0.1" step="any" required>
+                    <select id="heightUnit">
+                        <option value="cm">cm</option>
+                        <option value="m">m</option>
+                        <option value="ft">ft</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="calculateBtn">Calculate BMI</button>
+            </form>
+
+            <div id="result" class="result hidden">
+                <h2>Your Result</h2>
+                <p id="bmiValue"></p>
+                <p id="ageGroup"></p>
+            </div>
+
+            <p id="error" class="error"></p>
+        </main>
+
+        <footer>
+            <p>BMI Calculator | Spring Boot Project</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
